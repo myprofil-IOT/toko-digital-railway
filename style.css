@@ -1,0 +1,182 @@
+/* FILE: tokoku/css/style.css */
+
+/* --- RESET & BASIC STYLES --- */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5; /* Warna latar belakang lembut */
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px; /* Batas lebar agar tidak terlalu lebar di layar besar */
+    margin: 20px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* --- HEADER & NAVIGATION --- */
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+nav {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start; /* Navigasi dimulai dari kiri */
+    gap: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+nav a:hover {
+    background-color: #0056b3;
+}
+
+/* --- HEADINGS & TYPOGRAPHY --- */
+h1, h2 {
+    color: #007bff;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-top: 0;
+}
+
+h3 {
+    color: #333;
+}
+
+/* --- PRODUCT GRID (Tampilan Produk di index.php) --- */
+.product-grid {
+    display: flex; 
+    gap: 30px;
+    flex-wrap: wrap; /* Memastikan produk pindah baris jika layar kecil */
+    margin-top: 30px;
+}
+
+.product-card {
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: calc(33.333% - 20px); /* 3 kolom per baris */
+    min-width: 250px;
+    background: #fff;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px); /* Efek melayang saat kursor di atas */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.product-card .price {
+    color: #dc3545; /* Warna merah untuk harga */
+    font-weight: bold;
+    font-size: 1.6em;
+    margin: 15px 0;
+}
+
+.product-card a {
+    display: block;
+    background-color: #28a745; /* Warna hijau untuk tombol aksi */
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.product-card a:hover {
+    background-color: #1e7e34;
+}
+
+/* --- FORMS & BUTTONS (Login/Register/Checkout) --- */
+form {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    max-width: 400px;
+    margin: 20px 0;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* --- TABLES (Keranjang, Pesanan Admin) --- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+table th, table td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+table th {
+    background-color: #007bff;
+    color: white;
+}
+
+/* --- ALERT & MESSAGES --- */
+.success-msg {
+    color: green;
+    font-weight: bold;
+    border: 1px solid #d4edda;
+    background-color: #e4fce7;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.error-msg {
+    color: red;
+    font-weight: bold;
+    border: 1px solid #f8d7da;
+    background-color: #fceae9;
+    padding: 10px;
+    border-radius: 4px;
+}
