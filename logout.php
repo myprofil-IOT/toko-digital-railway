@@ -1,22 +1,8 @@
 <?php
-// FILE: logout.php
+// FILE: admin/logout.php
 session_start();
-
-// 1. Hapus semua variabel sesi
-$_SESSION = array();
-
-// 2. Hancurkan sesi
-if (ini_get("session.use_cookies")) {
-    $params = session_get_cookie_params();
-    setcookie(session_name(), '', time() - 42000,
-        $params["path"], $params["domain"],
-        $params["secure"], $params["httponly"]
-    );
-}
-
+unset($_SESSION['admin_logged_in']);
 session_destroy();
-
-// 3. Arahkan kembali ke halaman utama
-header("Location: index.php");
+header("Location: login.php");
 exit();
 ?>

@@ -1,49 +1,44 @@
 <?php
-// FILE: tokoku/login.php
-
-include 'header.php'; // Memanggil session_start(), koneksi, dan navigasi
+// FILE: admin/login.php
+session_start();
+include '../koneksi.php'; // Koneksi keluar satu folder
 
 $pesan = "";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $username = 'admin'; // Username admin statis
     $password_input = $_POST['password'];
 
-    $sql = "SELECT id_pengguna, username, password FROM pengguna WHERE email = '$email'";
-    $result = mysqli_query($conn, $sql);
-
-    if ($row = mysqli_fetch_assoc($result)) {
-        if (password_verify($password_input, $row['password'])) {
-            $_SESSION['id_pengguna'] = $row['id_pengguna'];
-            $_SESSION['username'] = $row['username'];
-            header("Location: akun_saya.php");
-            exit();
-        } else {
-            $pesan = "Email atau Password salah.";
-        }
+    // PENTING: Untuk contoh sederhana, kita gunakan password statis '12345'
+    // DI PROYEK NYATA: Anda harus menyimpan hash password admin di database juga.
+    if ($username == 'admin' && $password_input == '12345') { 
+        $_SESSION['admin_logged_in'] = true;
+        header("Location: dashboard.php");
+        exit();
     } else {
-        $pesan = "Email atau Password salah.";
+        $pesan = "Username atau Password salah.";
     }
 }
 ?>
 
-    <h2>Login Akun Pelanggan</h2>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Login</title>
+</head>
+<body>
+    <h2>Admin Login</h2>
+    <p style="color:red;"><?php echo $pesan; ?></p>
     
-    <?php if ($pesan): ?>
-        <p class="error-msg"><?php echo $pesan; ?></p>
-    <?php endif; ?>
-
     <form method="POST" action="login.php">
-        <label>Email:</label><br>
-        <input type="email" name="email" required><br><br>
+        Username: <br>
+        <input type="text" name="username" value="admin" readonly><br><br>
         
-        <label>Password:</label><br>
+        Password: <br>
         <input type="password" name="password" required><br><br>
         
-        <button type="submit">Login</button>
-        <p>Belum punya akun? <a href="register.php">Daftar di sini</a></p>
+        <button type="submit">Login Admin</button>
     </form>
-
-<?php
-include 'footer.php';
-?>
+</body>
+</html>
